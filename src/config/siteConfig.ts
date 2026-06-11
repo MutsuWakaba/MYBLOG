@@ -6,7 +6,7 @@ const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 export const siteConfig: SiteConfig = {
 	title: "Mizuki",
 	subtitle: "One demo website",
-	siteURL: "https://mizuki-blog.vercel.app/", // 部署后请替换为实际 Vercel 域名，以斜杠结尾
+	siteURL: "https://myblog-mizuki-lime.vercel.app/", // 以斜杠结尾
 	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	lang: SITE_LANG,
