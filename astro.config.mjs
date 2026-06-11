@@ -1,6 +1,7 @@
 import keystatic from "@keystatic/astro";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
+import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import mdx from '@astrojs/mdx';
 import svelte, { vitePreprocess } from "@astrojs/svelte";
@@ -41,6 +42,7 @@ export default defineConfig({
 	trailingSlash: "ignore",
 
 	output: "static",
+	adapter: vercel(),
 
 	image: {
 		layout: "constrained",
