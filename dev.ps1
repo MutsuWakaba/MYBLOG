@@ -21,7 +21,21 @@ if (-not (Test-Path "content")) {
 }
 
 Write-Host "🚀 正在启动开发服务器..." -ForegroundColor Cyan
-Write-Host "📍 启动后访问: http://127.0.0.1:3000" -ForegroundColor Cyan
+Write-Host "📍 博客访问: http://127.0.0.1:3000" -ForegroundColor Cyan
+Write-Host "📸 相册上传: http://localhost:3456" -ForegroundColor Cyan
 Write-Host ""
 
+# 后台启动相册上传工具
+$uploadJob = Start-Job -ScriptBlock {
+    Set-Location "d:\BOOK\Mizuki"
+    $path1 = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+    $path2 = [System.Environment]::GetEnvironmentVariable("Path", "User")
+    $env:Path = "$path1;$path2"
+    node scripts/upload-server.js
+}
+
 pnpm dev
+
+# 关闭博客时同时关闭上传工具
+Stop-Job $uploadJob -ErrorAction SilentlyContinue
+Remove-Job $uploadJob -ErrorAction SilentlyContinue
